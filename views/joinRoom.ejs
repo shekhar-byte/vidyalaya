@@ -1,0 +1,9 @@
+<% layout('layout/boilerplate.ejs') %>
+    <form action="/joinRoom" method="post" class="container d-flex flex-column justify-content-center align-item-center row g-3 mt-3 ms-3">
+        <div class="col-auto">
+            <input class="form-control form-control-lg" id="roomId" name="id" type="text" placeholder="Enter Room ID" aria-label=".form-control-lg example">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Join room</button>
+        </div>
+    </form>

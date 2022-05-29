@@ -1,0 +1,27 @@
+<% layout('layout/boilerplate.ejs') %>
+    <div class="container">
+        <h1>All Groups &nbsp; &nbsp;<span for="link" class="badge bg-primary"> <a id="link" href="/group" class="link link-light" style="text-decoration: none;">Create Group+</a> </span></h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Group Name</th>
+                    <th scope="col">Admin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let group of groups){ %>
+                    <tr>
+                        <td>
+                            <i class="fa-solid fa-user-group"></i>
+                            <%= group.title %>
+                        </td>
+                        <td>
+                            <%= group.author %>
+                        </td>
+                        <td><button class="btn btn-primary"><a class="link link-light" style="text-decoration: none;" href="/group/<%=group.id%>">Show</a></button></td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>

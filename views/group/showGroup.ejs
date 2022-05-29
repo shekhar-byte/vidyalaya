@@ -1,0 +1,62 @@
+<% layout('layout/boilerplate.ejs') %>
+    <div class="container">
+        <% 
+        const members = group.members.map(m => JSON.parse(m).username)
+        if(members.includes(currentUser.username) || group.author ){
+            %>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-primary"><a style="text-decoration: none;" class="link link-light" href="/<%= group.roomid %>">Join Room</a></button>
+            </div>
+            <%}%>
+
+
+                <div class="d-felx justify-content-start">
+                    <h1>
+                        <%= group.title %>
+                    </h1>
+                    <h3>
+                        Admin :
+                        <%= group.author %>
+                    </h3>
+
+                </div>
+
+                <div>
+
+                    <%= console.log(currentUser.username) %>
+                        <% if(currentUser.username === group.author){ %>
+                            <form action="/group/<%=group.id%>" novalidate class="validated-form" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label" for="username">Add User</label>
+                                    <input type="text" class="form-control" name="username" required id="username" placeholder="Enter username">
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        *Required
+                                    </div>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <button class="btn btn-success" type="submit">Add User</button>
+                                </div>
+                            </form>
+                            <% } %>
+
+
+
+                                <div>
+                                    <h4>Members</h4>
+                                    <ul>
+                                        <% for(let member of group.members){ %>
+                                            <li>
+                                                <%= JSON.parse(member).username %>
+                                            </li>
+                                            <% } %>
+                                    </ul>
+
+                                </div>
+
+                </div>
+    </div>
